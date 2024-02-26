@@ -1,0 +1,288 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #ffeced;
+}
+/* Override default focus colors for tailwindcss-forms https://github.com/tailwindlabs/tailwindcss-forms */
+[type='text']:focus,
+[type='email']:focus,
+[type='url']:focus,
+[type='password']:focus,
+[type='number']:focus,
+[type='date']:focus,
+[type='search']:focus,
+[type='checkbox']:focus,
+[type='radio']:focus,
+[multiple]:focus,
+textarea:focus,
+select:focus {
+  --tw-ring-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.react-datepicker-wrapper .react-datepicker__input-container input{
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  padding: 0px;
+}
+.react-datepicker__day.react-datepicker__day--keyboard-selected {
+  background: none;
+  color: black;
+}
+input:focus, textarea:focus{
+  outline:none !important;
+  outline-offset: 0 !important;
+  --tw-ring-offset-width:none !important;
+}
+
+li:focus-visible{
+  outline: none;
+}
+
+li:hover{
+  cursor: pointer;
+}
+
+.tab-panel--selected { animation-name: tabPanel; animation-duration: 300ms; animation-timing-function: linear; }
+@keyframes tabPanel { from { opacity: 0; } to { opacity: 1; } }
+/* Input style */
+.input-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container label {
+  position: absolute;
+  transform-origin: top left;
+  transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
+
+.input-container input {
+  transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
+
+.ps-menu-icon {
+  width: unset !important;
+  min-width: unset !important;
+  justify-content: start !important;
+  margin: 0 !important;
+}
+.ps-menu-button, .ps-menu-icon {
+  height: unset !important;
+}
+.ps-menu-button:hover {
+  background-color: unset !important;
+}
+.ps-sidebar-container, .ps-submenu-content{
+  background-color: transparent !important;
+}
+.ps-collapsed .ps-menu-icon{
+  min-width: 100% !important;
+  justify-content: center !important;
+}
+.ps-collapsed{
+  width: 80px !important;
+}
+.ps-sidebar-container, .ps-menu-root,.ps-menu-root>ul{
+  width:100%;
+  display:flex;
+  flex-direction: column;
+}
+.ps-sidebar-root{
+  min-width: unset !important;
+  border: none !important;
+}
+.ps-collapsed, .ps-collapsed .ps-menu-root, .ps-collapsed .ps-menu-button{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  margin-left: unset !important;
+  margin-right: unset !important;
+}
+.ps-collapsed ul{
+  align-items: center;
+}
+.ps-menu-label{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+/* hamburger */
+.hamburger {
+  cursor: pointer;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+}
+.hamburger .hamburger-box {
+  width: 25px;
+  height: 19px;
+  display: inline-block;
+  position: relative;
+}
+.hamburger .hamburger-box .hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -3.5px;
+  width: 25px;
+  height: 3px;
+  background-color: var(--pink_800);
+  border-radius: 50px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+.hamburger .hamburger-box .hamburger-inner::before {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--pink_800);
+  border-radius: 50px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+  top: -11px;
+}
+.hamburger .hamburger-box .hamburger-inner::after {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--pink_800);
+  border-radius: 50px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+  bottom: -11px;
+}
+.hamburger.hamburger--slider .hamburger-box .hamburger-inner {
+  top: 3.5px;
+}
+.hamburger.hamburger--slider .hamburger-box .hamburger-inner::before {
+  top: 8px;
+  transition-property: transform, opacity;
+  transition-timing-function: ease;
+  transition-duration: 0.15s;
+}
+.hamburger.hamburger--slider .hamburger-box .hamburger-inner::after {
+  bottom: -16px;
+}
+.hamburger.hamburger--slider.is-active .hamburger-box {
+  width: 25px;
+  height: 25px;
+}
+.hamburger.hamburger--slider.is-active .hamburger-box .hamburger-inner {
+  transform: translate3d(0, 15px, 0) rotate(45deg);
+  top: 0;
+}
+.hamburger.hamburger--slider.is-active .hamburger-box .hamburger-inner::before {
+  transform: rotate(-45deg) translate3d(-27px, -9px, 0);
+  opacity: 0;
+}
+.hamburger.hamburger--slider.is-active .hamburger-box .hamburger-inner::after {
+  transform: translate3d(0, -18px, 0) rotate(-90deg);
+  bottom: -18px;
+}
+
+.submenu_icon_hover:hover img{
+  filter: invert(10%) sepia(92%) saturate(4725%) hue-rotate(330deg) brightness(100%) contrast(105%);
+}
+
+.header-height-xs {
+  height: calc(100vh - 74px);
+}
+.sortby-dropdown {
+  border: 1px solid #666666;
+  padding: 0 4px 0 16px;
+  border-radius: 4px;
+}
+.sortby-dropdown .MuiFormControl-root {
+  min-width: 120px;
+}
+.sortby-dropdown .MuiOutlinedInput-notchedOutline{
+  border: none;
+}
+.sortby-dropdown .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+  border: none;
+}
+.sortby-dropdown .MuiFormLabel-root {
+  color: #000;
+  transform: translate(14px, 18px) scale(1);
+}
+.sortby-dropdown .MuiInputLabel-formControl.Mui-focused {
+  display: none;
+}
+.sortby-dropdown .MuiInputLabel-formControl.MuiFormLabel-filled {
+  display: none;
+}
+.adtocart-btn:hover .cart-icon {
+  filter: invert(100%) sepia(70%) saturate(0%) hue-rotate(333deg) brightness(111%) contrast(101%);
+}
+.adtocart-btn:hover .text-base.text-black-900 {
+  color: #fff !important;
+}
+
+.timeslot input[type="radio"] {
+  position: absolute;
+}
+.timeslot input[type="radio"] + label img {
+  display: none;
+}
+.timeslot input[type="radio"]:checked + label {
+  background-color: #FFECED;
+  border: 1px solid #FFECED !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.timeslot input[type="radio"]:checked + label img {
+  display: block;
+}
+
+input[type="text"]::placeholder {
+  color: var(--gray-700);
+  font-family: "MohrRoundedAlt-Regular";
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20px;
+  opacity: 1;
+}
+.checkstyle .MuiFormControlLabel-root {
+  margin-left: 0 !important;
+}
+.checkstyle .MuiCheckbox-root{
+  padding: 0 !important;
+}
+/* .sweet-loading span{
+  position: absolute !important;
+  inset: 0;
+  margin: auto;
+} */
+
+.placeholder-gray-700::placeholder {
+  color: var(--gray_700) !important;
+}

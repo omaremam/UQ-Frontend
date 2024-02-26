@@ -1,0 +1,260 @@
+// Define the common properties for all animations
+@mixin animation-base($duration: 1s) {
+    transition: all $duration ease-in-out;
+  }
+  // Animation from fade-in
+  @mixin fade-in($duration: 1s, $scale: 0.8) {
+    opacity: 0;
+    transform: scale($scale);
+    &.animation {
+      opacity: 1;
+      transform: scale(1);
+      @include animation-base($duration);
+    }
+  }
+  // Animation from left to right
+  @mixin slide-from-left($duration: 1s, $distance: 100px) {
+    opacity: 0;
+    transform: translateX(-$distance);
+    &.animation {
+      transform: translateX(0);
+      opacity: 1;
+      @include animation-base($duration);
+      &.menu-line {
+        transition-duration: 0.5s;
+      }
+    }
+  }
+  
+  // Animation from right to left
+  @mixin slide-from-right($duration: 1s, $distance: 100px) {
+    opacity: 0;
+    transform: translateX($distance);
+    &.animation {
+      transform: translateX(0);
+      opacity: 1;
+      @include animation-base($duration);
+    }
+  }
+  
+  // Animation from top to bottom
+  @mixin slide-from-top($duration: 1s, $distance: 100px) {
+    opacity: 0;
+    transform: translateY(-$distance);
+    &.animation {
+      transform: translateY(0);
+      opacity: 1;
+      @include animation-base($duration);
+    }
+  }
+  
+  // Animation from bottom to top
+  @mixin slide-from-bottom($duration: 1s, $distance: 100px) {
+    opacity: 0;
+    transform: translateY($distance);
+    &.animation {
+      transform: translateY(0);
+      opacity: 1;
+      @include animation-base($duration);
+    }
+  }
+  
+  // Rotation animation
+  @mixin rotate($duration: 1s, $angle: 45deg) {
+    @include animation-base($duration);
+    transform: rotate(0deg);
+    &.rotate {
+      transform: rotate($angle);
+    }
+  }
+
+  .menu-element {
+    &.left-animation {
+      @include slide-from-left;
+    }
+  }
+  
+  // Example usage
+  .my-element {
+    
+    &.fade-animation {
+      @include fade-in;
+    }
+
+    &.left-animation {
+      @include slide-from-left;
+    }
+  
+    &.right-animation {
+      @include slide-from-right;
+    }
+  
+    &.top-animation {
+      @include slide-from-top;
+    }
+  
+    &.bottom-animation {
+      @include slide-from-bottom;
+    }
+  
+    &.rotation-animation {
+      @include rotate;
+    }
+    @media screen and (max-width: 768px) {
+      &.fade-animation {
+        opacity: 1;
+      }
+      &.left-animation {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    
+      &.right-animation {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    
+      &.top-animation {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    
+      &.bottom-animation {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+
+button {
+  span {
+    z-index: 1;
+    @mixin slide-from-right($duration: 1s, $distance: 100px) {
+      opacity: 0;
+      transform: translateX($distance);
+    }
+  }
+  .text-btn {
+    z-index: 2;
+  }
+  &.hover-animation {
+    &.bg-black-900 {
+      &:hover {
+        .text-btn {
+          color: var(--black_900);
+        }
+      }
+    }
+    &:hover {
+      .btn-icon {
+        filter: invert(100%) sepia(70%) saturate(0%) hue-rotate(333deg) brightness(111%) contrast(101%);
+        z-index: 2;
+      }
+      span {
+        transform: translateX(0);
+        opacity: 1;
+        right: 0;
+        @include animation-base(0.3s);
+      }
+      .text-btn {
+        color: var(--white_A700);
+      }
+    }
+  }
+  &.border-black-900[disabled] {
+    border-color: var(--gray_300) !important;
+    color: var(--gray_300);
+    cursor: not-allowed;
+    &:hover {
+      .text-btn {
+        color: var(--gray_300);
+      }
+    }
+    img {
+        filter: opacity(0.2);
+    }
+  }
+  &.bg-black-900[disabled] {
+    background: var(--gray_300);
+    color: var(--gray_700);
+    &:hover {
+      .text-btn {
+        color: var(--gray_700);
+      }
+    }
+    border-color: var(--gray_300) !important;
+    cursor: not-allowed;
+
+    img {
+        filter: opacity(0.2);
+    }
+  }
+}
+
+.footer-link {
+  position: relative;
+  &:after {
+    content: " ";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    left: 0;
+    bottom: -5px;
+    background: var(--pink_800);
+  }
+  &:hover {
+    &:after {
+      width: 100%;
+      transition: width 0.3s ease-in-out;
+    }
+  }
+}
+
+.image-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.moving-image {
+  // position: absolute;
+  width: 100%;
+  height: 100%;
+  // transition: all 0.2s ease-in-out;
+}
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.pulse {
+  animation: pulse 5s ease-in-out infinite;
+}
+
+.scrolling-image {
+  // width: 100%; /* Set the width of the image */
+  // height: auto; /* Set the height of the image */
+  // position: absolute;
+  // transition: all 0.2s ease-out; /* Add a smooth transition effect */
+}
+
+.blog-card:hover .blog-card-image {
+    transform: scale(1.1);
+    transition: all 0.2s ease-out;
+}
+
+html {
+  scroll-behavior: smooth;
+}

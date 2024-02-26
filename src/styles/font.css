@@ -1,0 +1,36 @@
+
+ @font-face { 
+    font-display: swap; 
+    font-style : normal; 
+    src: url("assets/fonts/MohrRoundedAlt-Medium.ttf"); 
+    font-family : "MohrRoundedAlt-Medium"; 
+    font-weight : 500;  
+}
+ @font-face { 
+    font-display: swap; 
+    font-style : normal; 
+    src: url("assets/fonts/MohrRoundedAlt-Regular.ttf"); 
+    font-family : "MohrRoundedAlt-Regular"; 
+    font-weight : 400;  
+}
+ @font-face { 
+    font-display: swap; 
+    font-style : normal; 
+    src: url("assets/fonts/MohrRoundedAlt-Black.ttf"); 
+    font-family : "Josefin Sans"; 
+    font-weight : 500;  
+}
+ @font-face { 
+    font-display: swap; 
+    font-style : normal; 
+    src: url("assets/fonts/MohrRoundedAlt-SemiBold.ttf"); 
+    font-family : "MohrRoundedAlt-SemiBold"; 
+    font-weight : 400;  
+}
+ @font-face { 
+    font-display: swap; 
+    font-style : normal; 
+    src: url("assets/fonts/MohrRoundedAlt-Bold.ttf"); 
+    font-family : "MohrRoundedAlt-Bold"; 
+    font-weight : 700;  
+}
